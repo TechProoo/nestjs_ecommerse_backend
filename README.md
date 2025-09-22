@@ -1,98 +1,143 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🛒 E-Commerce API – Use Case 1
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This repository contains the OpenAPI 3.0 specification for an **e-commerce application API**.  
+It documents the endpoints for managing products, orders, and reviews.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 📍 Base URLs
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+| Environment | URL                     | Description              |
+| ----------- | ----------------------- | ------------------------ |
+| Development | `http://localhost:3000` | Local development server |
 
-## Project setup
+---
 
-```bash
-$ npm install
-```
+## 📄 API Info
 
-## Compile and run the project
+- **Version:** 1.0.0
+- **Title:** Use case 1 – E-Commerce
+- **Description:** E-commerce application API documentation
+- **Contact:** [olaoluwaoyetibo@gmail.com](mailto:olaoluwaoyetibo@gmail.com)
 
-```bash
-# development
-$ npm run start
+---
 
-# watch mode
-$ npm run start:dev
+## 🏷️ Tags
 
-# production mode
-$ npm run start:prod
-```
+| Tag         | Description                             |
+| ----------- | --------------------------------------- |
+| `admins`    | Secured admin-only calls                |
+| `protected` | Endpoints requiring authorization token |
+| `products`  | Products-related endpoints              |
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
+## 🗂️ Endpoints Overview
 
-# e2e tests
-$ npm run test:e2e
+### Products
 
-# test coverage
-$ npm run test:cov
-```
+| Method   | Path                              | Summary                                    | Tags                        |
+| -------- | --------------------------------- | ------------------------------------------ | --------------------------- |
+| `GET`    | `/products`                       | List all products with pagination          | products                    |
+| `POST`   | `/products`                       | Create a new product                       | products, protected, admins |
+| `GET`    | `/products/{id}`                  | Get a product by ID                        | products                    |
+| `PUT`    | `/products/{id}`                  | Update a product by ID                     | products, protected         |
+| `DELETE` | `/products/{id}`                  | Soft delete a product by ID                | products, protected, admins |
+| `GET`    | `/products/{id}/orders`           | List orders for a product with pagination  | products                    |
+| `GET`    | `/products/{id}/orders/{orderId}` | Get a specific order by ID for a product   | products                    |
+| `GET`    | `/products/{id}/reviews`          | List reviews for a product with pagination | products                    |
+| `GET`    | `/products/search`                | Search for products                        | products                    |
 
-## Deployment
+---
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## 🔑 Parameters
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Common Pagination
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+- **`page`** (query): Page number (integer ≥ 1)
+- **`limit`** (query): Number of items per page (integer)
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Path Parameters
 
-## Resources
+- **`id`** (path): UUID of the product
+- **`orderId`** (path): UUID of the order
 
-Check out a few resources that may come in handy when working with NestJS:
+### Search Query Parameters
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+- **`keyword`** (query): Keyword to search product names/descriptions
+- **`minPrice`** (query): Minimum price filter (number)
+- **`maxPrice`** (query): Maximum price filter (number)
 
-## Support
+---
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 📦 Schemas
 
-## Stay in touch
+### `Id`
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- `string` (UUID)
 
-## License
+### `BaseProduct`
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+| Field         | Type   | Example                          |
+| ------------- | ------ | -------------------------------- |
+| `name`        | string | iPhone 15 Pro Max                |
+| `description` | string | Full product description         |
+| `price`       | number | 1200.03                          |
+| `brand`       | string | Apple                            |
+| `specs`       | object | `{ "Ram": "8Go", "SSD": "1To" }` |
+
+### `Product` = `BaseProduct` + `id`
+
+### `Order`
+
+| Field        | Type          | Description                      |
+| ------------ | ------------- | -------------------------------- |
+| `user`       | string (UUID) | ID of user placing the order     |
+| `quantity`   | integer ≥ 1   | Quantity ordered                 |
+| `totalPrice` | number        | Total price of the order         |
+| `payment`    | string (UUID) | Payment ID attached to the order |
+
+### `APIResponse`
+
+| Field     | Type    | Required |
+| --------- | ------- | -------- |
+| `success` | boolean | ✅       |
+| `message` | string  | ✅       |
+| `error`   | object  |          |
+| `data`    | object  | ✅       |
+
+### `User`
+
+- `id`: string (UUID)
+- `name`: string
+
+---
+
+## ✅ Standard Responses
+
+- **200 OK**  
+  Returns an [`APIResponse`](#apiresponse) object.
+
+- **201 Created**  
+  Returned when a resource is successfully created.
+
+Error responses follow the same `APIResponse` schema with `success=false` and an `error` object.
+
+---
+
+## 🚀 How to Use Locally
+
+1. Start your server on port 3000.
+2. Navigate to `http://localhost:3000` or the documentation UI (Swagger, Redoc, etc.).
+3. Use the endpoints as defined above with the appropriate HTTP methods.
+
+---
+
+## 📚 Tools
+
+This spec is OpenAPI 3.0 compatible. You can:
+
+- Load it into Swagger UI or Postman to test endpoints.
+- Generate client SDKs using `openapi-generator`.
+
+---
