@@ -17,7 +17,7 @@ import { ProductsModule } from './products/products.module';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
-        entities: [],
+        entities: [__dirname + '/**/entities/*.entity{.ts,.js}'],
         synchronize: true,
       }),
     }),

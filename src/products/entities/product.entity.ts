@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('products')
 export class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -17,13 +17,11 @@ export class Product {
   @Column('text', { default: 'no-image.png' })
   image: string;
 
-  @Column({
-    type: 'simple-json',
+  @Column('simple-json', {
     default: {},
     comment: "a key-value pair that represents the product's specs",
   })
   specs: Record<string, string>;
-
   @Column({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP',

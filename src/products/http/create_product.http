@@ -1,0 +1,18 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Macbook Pro M3",
+    "description": "This product is a Macbook penis Pro with an M3 Pro Ultra Max chip, 32TB of RAM and 100TB of SSD, no scratches on it. We also offer 3 months guarantee for this product. You also have the possibility to upgrade to newer models in the future.",
+    "price": 1999.99,
+    "image": "https://www.apple.com/newsroom/images/2023/09/appleunveils-iphone-15-pro-and-iphone-15-pro-max/article/Apple-iPhone-15-Pro-lineup-hero-230912_Full-Bleed-Image.jpg.large.jpg",
+    "specs": {
+        "ram": "32TB",
+        "ssd": "100TB",
+        "chip": "M3 Pro Ultra Max",
+        "condition": "like new",
+        "model": "Macbook Pro",
+        "color": "grey",
+        "year": "2023"
+    }
+}
